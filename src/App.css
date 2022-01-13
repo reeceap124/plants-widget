@@ -1,4 +1,7 @@
 .App {
   text-align: center;
+}
+
+div.plantsManagerEmbed div.App h1 {
   color: slateblue !important;
 }
