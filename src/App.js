@@ -1,38 +1,23 @@
 import './App.css'
-import { Route, Routes, Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import {
+  Route,
+  Routes,
+  Link,
+  useSearchParams,
+  useLocation,
+  useNavigate
+} from 'react-router-dom'
 
-function App() {
+function App(props) {
+  const user = props.domElement.getAttribute('data-user')
+  const [searchParams] = useSearchParams()
+  const plant = searchParams.get('plant') || null
+
   return (
     <div className="App">
-      <h1>Hey</h1>
-      <Link to="/plants">Home</Link>
-      <Link to="/plants/1">About</Link>
-      <Routes>
-        <Route path="/plants" element={<Home />} />
-        <Route path="/plants/:id" element={<About />} />
-      </Routes>
+      <h1>Hey {user}</h1>
     </div>
-  )
-}
-function Home() {
-  return (
-    <>
-      <h2>Hello</h2>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  )
-}
-
-function About() {
-  return (
-    <>
-      <h3>Third</h3>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
   )
 }
 

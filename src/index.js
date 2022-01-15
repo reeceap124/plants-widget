@@ -4,16 +4,22 @@ import './index.css'
 import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router } from 'react-router-dom'
-const init = (root = document.getElementById('root')) =>
-  ReactDOM.render(
-    <React.StrictMode>
-      <Router>
-        <App />
-      </Router>
-    </React.StrictMode>,
-    root
-  )
-const embed = document.getElementById('plantsManagerEmbed')
+
+const init = (roots) => {
+  return roots.map((root) => {
+    return ReactDOM.render(
+      <React.StrictMode>
+        <Router>
+          <App domElement={root} />
+        </Router>
+      </React.StrictMode>,
+      root
+    )
+  })
+}
+
+const embed = Array.from(document.getElementsByClassName('plantsManagerEmbed'))
+console.log('embed:', embed)
 if (embed) {
   init(embed)
 }
